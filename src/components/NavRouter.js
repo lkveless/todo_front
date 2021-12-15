@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Switch, Route, Redirect} from 'react-router-dom'
+import { Context } from '..'
 import { loginRoutes, notLoginRoutes } from '../routes'
+import {observer} from "mobx-react-lite"
 
-const NavRouter = () => {
-    const isAuth = false
+const NavRouter = observer(() => {
+    const {user} = useContext(Context)
 
+    console.log(user)
     return (
         <Switch>
-           { isAuth && loginRoutes.map(({path, Component}) => 
+           { user.isAuth && loginRoutes.map(({path, Component}) => 
             <Route key={path} path={path} component={Component} exact/>
            )}
             {notLoginRoutes.map(({path, Component}) => 
@@ -16,6 +19,6 @@ const NavRouter = () => {
            <Redirect to ='/blank'/>
         </Switch>
     )
-}
+})
 
 export default NavRouter
