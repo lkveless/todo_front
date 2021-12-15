@@ -1,8 +1,8 @@
 import Auth from "./views/Auth"
 import Blank from "./views/Blank"
-import CreateTodo from "./views/CreateTodo"
 import TodoPage from "./views/TodoPage"
 import Todos from "./views/Todos"
+import User from "./views/User"
 
 export const loginRoutes =[
     {
@@ -10,12 +10,12 @@ export const loginRoutes =[
         Component: Todos
     },
     {
-        path: '/single_todo',
+        path: '/todo/:id',
         Component: TodoPage
     },
     {
-        path: '/create_todo',
-        Component: CreateTodo
+        path: '/user_page',
+        Component: User
     }
 ]
 export const notLoginRoutes =[
