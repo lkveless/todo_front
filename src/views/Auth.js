@@ -19,22 +19,26 @@ const Auth = observer(() => {
     const [password, setPassword] = useState('')
 
     const click = async () => {
-        try{ let data
+     let data
             if(isLogin){
-                data = await loginn(email, login, password)
-                console.log(data)
+                try{data = await loginn(email, login, password)
+                console.log(data)}
+                catch(error){
+                    alert('Введите верные данные')
+                }
     
             }else{
-                data = await registration(email, login, password)
-                console.log(data)
+                try{data = await registration(email, login, password)
+                console.log(data)}
+                catch(error){
+                    alert('Некорректный ввод!')
+                }
             }
             user.setUser(user)
             user.setIsAuth(true)
-            history.push('/blank')}
+            history.push('/blank')
             
-        catch(e){
-            alert(e.response.error.message)
-        }
+        
         
     }
     return (

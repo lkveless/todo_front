@@ -10,6 +10,7 @@ export const loginn = async (email, login, password) =>{
     localStorage.setItem('token', data.accessToken)
     localStorage.setItem('user_id', data.userID)
     return data
+    
 }
 
 export const check = async() => {

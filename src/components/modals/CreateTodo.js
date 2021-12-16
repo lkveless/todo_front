@@ -8,7 +8,10 @@ const CreateTodo = ({show, onHide}) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const click = async () => {
-        createTodo(title, description)
+        try{createTodo(title, description)}
+        catch(e){
+            alert('Отсутсвует название')
+        }
     }
 
     
