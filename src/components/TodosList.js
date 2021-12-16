@@ -25,28 +25,20 @@ const TodosList = observer(({sort}) => {
     }, [sort])
 
     const onFavouriteClicked = async (id, isFavourite) =>{
-        console.log(id, isFavourite)
-        setId(id); 
+        console.log(id, !isFavourite)
         todoList.todoIsFavourite(id); 
-        setIsFavourite(isFavourite);
+        todoFavourite(id, !isFavourite);
         
     }
 
-    const click = async () => {
-        console.log(id, isCompleted)
-        todoDone(id, isCompleted).catch(function(error){     
-            console.log(error)       
-        })
-        
-    }   
+    const onCompleteClicked = async (id, isCompleted) =>{
+        console.log(id, !isCompleted)
+        todoList.todoIsDone(id)
+        todoDone(id, !isCompleted)
+    }
+   
 
-    const click1 = async () => {
-        console.log(id, isFavourite)
-       todoFavourite(id, isFavourite).catch(function(error){       
-        console.log(error)    
-    })     
     
-    }
     return (
         <ListGroup className='mt-2'>
             {todoList.todos.map(todo =>
@@ -66,7 +58,7 @@ const TodosList = observer(({sort}) => {
                     onClick={() => {localStorage.setItem('todoID', todo.id); setDeleteVisible(true)}}
                 >delete</Button>
                 <DeleteTodo show={deleteVisible} onHide={() => setDeleteVisible(false)}/>
-                <Button style={{marginBottom:5}} onClick ={() => {setId(todo.id); todoList.todoIsDone(todo.id); setIsCompleted(todo.isCompleted);  click(id, isCompleted);}}
+                <Button style={{marginBottom:5}} onClick ={() => {onCompleteClicked(todo.id, todo.isCompleted)}}
                     variant="dark"
                 >complete</Button>
                 <Button onClick = {() => {onFavouriteClicked(todo.id, todo.isFavourite)}
