@@ -22,21 +22,26 @@ const Auth = observer(() => {
      let data
             if(isLogin){
                 try{data = await loginn(email, login, password)
-                console.log(data)}
-                catch(error){
+                console.log(data)
+                user.setUser(user)
+                user.setIsAuth(true)
+                history.push('/blank')}
+                catch(error)
+                {
                     alert('Введите верные данные')
                 }
     
             }else{
                 try{data = await registration(email, login, password)
-                console.log(data)}
+                console.log(data)
+                user.setUser(user)
+                
+                history.push('/blank')}
                 catch(error){
                     alert('Некорректный ввод!')
                 }
             }
-            user.setUser(user)
-            user.setIsAuth(true)
-            history.push('/blank')
+            
             
         
         
