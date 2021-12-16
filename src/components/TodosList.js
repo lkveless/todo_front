@@ -24,6 +24,14 @@ const TodosList = observer(({sort}) => {
         })
     }, [sort])
 
+    const onFavouriteClicked = async (id, isFavourite) =>{
+        console.log(id, isFavourite)
+        setId(id); 
+        todoList.todoIsFavourite(id); 
+        setIsFavourite(isFavourite);
+        
+    }
+
     const click = async () => {
         console.log(id, isCompleted)
         todoDone(id, isCompleted).catch(function(error){     
@@ -61,8 +69,8 @@ const TodosList = observer(({sort}) => {
                 <Button style={{marginBottom:5}} onClick ={() => {setId(todo.id); todoList.todoIsDone(todo.id); setIsCompleted(todo.isCompleted);  click(id, isCompleted);}}
                     variant="dark"
                 >complete</Button>
-                <Button onClick = {() => {setId(todo.id); todoList.todoIsFavourite(todo.id); setIsFavourite(todo.isFavourite);  click1(id, isFavourite);}}
-                    variant="dark"
+                <Button onClick = {() => {onFavouriteClicked(todo.id, todo.isFavourite)}
+                }variant="dark"
                 >favourite</Button></Row>
                 
             </ListGroup.Item>
