@@ -21,7 +21,6 @@ export const todoDelete = async (id) => {
 }
 
 
-
 export const todoDone = async(id, isCompleted) => {
    const {data} =  await $authHost.patch('/todos/' + id, {isCompleted})
    return data

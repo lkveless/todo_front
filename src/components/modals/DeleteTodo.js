@@ -1,8 +1,8 @@
-import React, {useState, useContext} from 'react';
+import React from 'react';
 import Modal from "react-bootstrap/Modal";
-import {Form, Button} from "react-bootstrap";
+import { Button} from "react-bootstrap";
 import { todoDelete } from '../../http/todoAPI';
-import { Context } from '../..';
+
 
 
 const DeleteTodo = ({ show, onHide}) => {

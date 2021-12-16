@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, {useState} from 'react'
-import {Container, Row, Col, ToggleButton, ToggleButtonGroup} from "react-bootstrap"
+import {ToggleButton, ToggleButtonGroup} from "react-bootstrap"
 
 import TodosList from '../components/TodosList'
 

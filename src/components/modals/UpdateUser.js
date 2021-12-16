@@ -12,7 +12,7 @@ const UpdateUser = ({show, onHide}) => {
     const [state, setState] = useState(false)
     const click = async () => {
             updateUser(localStorage.getItem('id'), email, login, name).catch(function(error){
-                setState(true)
+                alert('некорректный ввод')
             })
         
     }

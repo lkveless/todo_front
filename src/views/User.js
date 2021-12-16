@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Container, Button } from 'react-bootstrap'
 import CreateTodo from '../components/modals/CreateTodo'
 import UpdateUser from '../components/modals/UpdateUser'

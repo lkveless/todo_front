@@ -14,10 +14,12 @@ const TodoPage = observer(() => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
         const click = async () => {
-            await todoUpdate(id, title, description)
-        
-    }
-    return (
+            if(!title){
+                alert('нет названия')
+                return;
+            }
+            await todoUpdate(id, title, description)}
+        return (
         
         <Container className='mt-5'>
             <Form>

@@ -11,7 +11,6 @@ const TodosList = observer(({sort}) => {
     let url = "http://localhost:3000/todo/"
     const [id, setId] = useState('')
     const {todoList} = useContext(Context)
-    let dataIsPresent = false
     const [isCompleted, setIsCompleted] = useState('')
     const [isFavourite, setIsFavourite] = useState('')
     useEffect (() => {
@@ -21,24 +20,23 @@ const TodosList = observer(({sort}) => {
                 console.log('response',response)
                 todoList.addTodos(response)
                 todoList.todoSort(sort)
-                dataIsPresent = true
-            } else {
-                dataIsPresent = false
-            }
+            } 
         })
     }, [sort])
 
     const click = async () => {
-        
         console.log(id, isCompleted)
-  
-        todoDone(id, isCompleted)
+        todoDone(id, isCompleted).catch(function(error){     
+            console.log(error)       
+        })
         
     }   
 
     const click1 = async () => {
         console.log(id, isFavourite)
-        todoFavourite(id, isFavourite)        
+       todoFavourite(id, isFavourite).catch(function(error){       
+        console.log(error)    
+    })     
     
     }
     return (
@@ -52,7 +50,7 @@ const TodosList = observer(({sort}) => {
                 {todo.title}
                 
                 </a>
-                <div>{todo.description}</div>
+                <div><a href={url + todo.id}>{todo.description}</a></div>
                 </Row>
                 
                 <Row><Button style={{marginBottom:5}}
