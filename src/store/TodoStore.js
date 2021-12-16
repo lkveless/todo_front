@@ -9,8 +9,6 @@ export default class TodoStore{
     addTodos(todos) {
         this.todos = todos.todos.slice()
     }
-
-    
     
     todoIsDone(id) {
         this.todos = this.todos.map(todo => todo.id === id ? {...todo, isCompleted:!todo.isCompleted}: todo)
